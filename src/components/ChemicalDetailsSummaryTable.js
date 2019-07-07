@@ -21,12 +21,12 @@ export class ChemicalDetailsSummaryTable extends React.Component  {
     render() {
       return (
         <Table>
-            <thead>
+            { this.props.chemicalSummaryDetails instanceof Array ? <thead>
               <tr>
                 <td>Chemical name</td>
                 <td>{this.props.chemicalName}</td>
               </tr>
-            </thead>
+            </thead> : null }
             <tbody>
               {this.renderRows()}
             </tbody>
