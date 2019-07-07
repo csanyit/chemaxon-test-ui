@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Alert, Table } from 'react-bootstrap';
 
 export class ChemicalDetailsSummaryTable extends React.Component  {
 
@@ -7,9 +7,16 @@ export class ChemicalDetailsSummaryTable extends React.Component  {
       if ( this.props.chemicalSummaryDetails == null  ) {
           return (<tr></tr>);
       }
-      return this.props.chemicalSummaryDetails.map(element => {
-        return <tr><td>{element.label}</td><td>{element.value.toString()}</td></tr>
-      });
+      if ( this.props.chemicalSummaryDetails instanceof Array ) {
+        return this.props.chemicalSummaryDetails.map(element => {
+          return <tr><td>{element.label}</td><td>{element.value.toString()}</td></tr>
+        });
+      } else {
+        console.log(this.props.chemicalSummaryDetails);
+        return (
+          <tr><td><Alert variant="danger">Error during querying Chemicalize Pro (status {this.props.chemicalSummaryDetails.status}): {JSON.parse(this.props.chemicalSummaryDetails.message).message}</Alert></td></tr>
+        )
+      }
     }
 
     render() {
