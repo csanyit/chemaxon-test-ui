@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, InputGroup, Row, Col } from 'react-bootstrap';
+import { Button, Form, Row, Col } from 'react-bootstrap';
 import {RESTAPIService} from '../service/RESTAPIService';
 
 export class ChemicalDetailsSummarySearchForm extends React.Component {

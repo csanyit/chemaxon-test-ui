@@ -12,7 +12,6 @@ export class ChemicalDetailsSummaryTable extends React.Component  {
           return <tr><td>{element.label}</td><td>{element.value.toString()}</td></tr>
         });
       } else {
-        console.log(this.props.chemicalSummaryDetails);
         return (
           <tr><td><Alert variant="danger">Error during querying Chemicalize Pro (status {this.props.chemicalSummaryDetails.status}): {JSON.parse(this.props.chemicalSummaryDetails.message).message}</Alert></td></tr>
         )
@@ -21,7 +20,7 @@ export class ChemicalDetailsSummaryTable extends React.Component  {
 
     render() {
       return (
-        <Table xs>
+        <Table>
             <thead>
               <tr>
                 <td>Chemical name</td>
