@@ -25,15 +25,15 @@ export class MarvinBox extends React.Component {
         });
     }
 
+    componentDidMount = () => {
+        this.setupMarvin();
+    }
+
     render() {
-        if ( this.props.chemicalName && this.props.chemicalName != this.state.currentChemical ) {
-            if (!this.state.marvin) {
-                this.setupMarvin();
-            } else {
-                this.setState({currentChemical: this.props.chemicalName});
-                this.state.marvin.importStructure3d();
-                this.state.marvin.importStructure3d("name", this.props.chemicalName);
-            }
+        if ( this.state.marvin && this.props.chemicalName && this.props.chemicalName != this.state.currentChemical ) {
+            this.setState({currentChemical: this.props.chemicalName});
+            this.state.marvin.importStructure3d();
+            this.state.marvin.importStructure3d("name", this.props.chemicalName);
         }
         return (
             <div id="marvin-display-div" className="marvinBox"></div>

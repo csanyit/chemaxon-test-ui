@@ -42,7 +42,7 @@ export default class App extends React.Component {
             <Col xs><section><section className="resultTable"> { this.state.chemicalDetailsSummary ? <ChemicalDetailsSummaryTable chemicalName={String(this.state.chemicalName).toString()} chemicalSummaryDetails={this.state.chemicalDetailsSummary}></ChemicalDetailsSummaryTable> : null }</section></section></Col>
           </Row>
           <Row>
-            <Col xs><section><MarvinBox chemicalName={this.state.chemicalName}></MarvinBox></section></Col>
+            <Col xs><section>{ this.state.chemicalDetailsSummary && this.state.chemicalDetailsSummary instanceof Array ?<MarvinBox chemicalName={this.state.chemicalName}></MarvinBox> : null }</section></Col>
           </Row>
         </Container>
       </div>
