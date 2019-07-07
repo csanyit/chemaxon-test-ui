@@ -6,8 +6,7 @@ export class ChemicalDetailsSummaryTable extends React.Component  {
     renderRows = function() {
       if ( this.props.chemicalSummaryDetails == null  ) {
           return (<tr></tr>);
-      }
-      if ( this.props.chemicalSummaryDetails instanceof Array ) {
+      } else if ( this.props.chemicalSummaryDetails instanceof Array ) {
         return this.props.chemicalSummaryDetails.map(element => {
           return <tr><td>{element.label}</td><td>{element.value.toString()}</td></tr>
         });
