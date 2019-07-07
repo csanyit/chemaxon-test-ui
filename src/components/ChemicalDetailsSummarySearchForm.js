@@ -42,6 +42,7 @@ export class ChemicalDetailsSummarySearchForm extends React.Component {
           this.setState({
             requestPending : false
           });
+          this.props.onChemicalSummaryDetailsChange({ message: JSON.stringify({message: "Could not connect to backend"}), status: "FETCH_ERR" });
           console.error(err);
         });
     }
