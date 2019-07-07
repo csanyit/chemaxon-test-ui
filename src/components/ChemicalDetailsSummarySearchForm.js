@@ -7,10 +7,11 @@ export class ChemicalDetailsSummarySearchForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        formControls : {
-          chemicalname : null
+        formControls: {
+          chemicalname: null
         },
-        requestPending : false
+        requestPending: false,
+        currentElement: null
       };
       this.RESTAPIService = new RESTAPIService();
     }
@@ -26,11 +27,14 @@ export class ChemicalDetailsSummarySearchForm extends React.Component {
     }
   
     searchChemicalDetaildHandler = () => {
-      this.setState({
-        requestPending : true
-      });
-      this.props.onChemicalSummaryDetailsChange(null);
-      this.RESTAPIService.getChemicalSummaryDetails(this.state.formControls.chemicalname)
+      
+      if ( this.state.formControls.chemicalname != this.state.currentElement ) {
+        this.setState({
+          currentElement : this.state.formControls.chemicalname,
+          requestPending : true
+        });
+        this.props.onChemicalSummaryDetailsChange(null);
+        this.RESTAPIService.getChemicalSummaryDetails(this.state.formControls.chemicalname)
         .then( result => {
           this.setState({
             requestPending : false
@@ -45,6 +49,7 @@ export class ChemicalDetailsSummarySearchForm extends React.Component {
           this.props.onChemicalSummaryDetailsChange({ message: JSON.stringify({message: "Could not connect to backend"}), status: "FETCH_ERR" });
           console.error(err);
         });
+      }
     }
   
     render() {
@@ -53,7 +58,7 @@ export class ChemicalDetailsSummarySearchForm extends React.Component {
                 <Row>
                     <Col className="mb-1">
                         <Form.Control  name="chemicalname"
-                              placeholder="Chemical"
+                              placeholder="Chemical name"
                               aria-label="Chemical"
                               aria-describedby="basic-addon1"
                               onChange={ (e) => {

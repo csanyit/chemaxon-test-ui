@@ -35,10 +35,8 @@ export default class App extends React.Component {
           <Row>
             <Col xs>
               <h3>Chemical details summary searcher</h3>
+              <section><ChemicalDetailsSummarySearchForm chemicalSummaryDetails={this.state.chemicalDetailsSummary} onChemicalSummaryDetailsChange={this.chemicalSummaryDetailsChangeHandler} onChemicalNameChange={this.chemicalNameChangeHandler}></ChemicalDetailsSummarySearchForm></section>
             </Col>
-          </Row>
-          <Row>
-            <Col xs><section><ChemicalDetailsSummarySearchForm chemicalSummaryDetails={this.state.chemicalDetailsSummary} onChemicalSummaryDetailsChange={this.chemicalSummaryDetailsChangeHandler} onChemicalNameChange={this.chemicalNameChangeHandler}></ChemicalDetailsSummarySearchForm></section></Col>
             <Col xs><section><section className="resultTable"> { this.state.chemicalDetailsSummary ? <ChemicalDetailsSummaryTable chemicalName={String(this.state.chemicalName).toString()} chemicalSummaryDetails={this.state.chemicalDetailsSummary}></ChemicalDetailsSummaryTable> : null }</section></section></Col>
           </Row>
           <Row>
